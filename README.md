@@ -1,6 +1,6 @@
 # neohash
 
-neohash is a replacement for the sha256sum command on linux, and could be a much simpler way to get a file's hash on windows
+neohash is a replacement for the `sha256sum` command, and is also a simpler way to compare file hashes.
 
 ## Usage
 
