@@ -14,6 +14,8 @@ function color(input) {
 			return "\x1b[1m";
 		case "underline":
 			return "\x1b[4m";
+		case "brightunderline":
+			return "\x1b[1m" + "\x1b[4m";
 	}
 }
 
