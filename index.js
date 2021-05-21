@@ -29,10 +29,19 @@ if (!process.argv[2]) {
 	return 0;
 }
 
+function copyToClipboard(txt) {
+	clipboard.writeSync(txt);
+}
+
+let option = false;
+let options = {
+	c: copyToClipboard,
+};
 let fd;
 
-if (process.argv[2] == "-c") {
-	fd = fs.createReadStream(process.argv[3]);
+if (process.argv[2].charAt(0) == "-") {
+	fd = fs.createReadStream(process.argv[process.argv.length - 1]);
+	option = true;
 } else {
 	fd = fs.createReadStream(process.argv[2]);
 }
@@ -43,8 +52,11 @@ hash.setEncoding("hex");
 fd.on("end", function () {
 	hash.end();
 	var txt = hash.read();
-	if (process.argv[2] == "-c") {
-		clipboard.writeSync(txt);
+	if (option) {
+		option = process.argv[2].charAt(1);
+		if (options[option]) {
+			options[option](txt);
+		}
 	}
 	txt = rainbow(txt);
 	console.log(txt);
