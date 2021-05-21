@@ -49,14 +49,21 @@ function rainbow(input) {
 	return colorTxt;
 }
 
-var fd = fs.createReadStream(process.argv[2]);
+let fd;
+
+if (process.argv[2] == "-c") {
+	fd = fs.createReadStream(process.argv[3]);
+} else {
+	fd = fs.createReadStream(process.argv[2]);
+}
+
 var hash = crypto.createHash("sha256");
 hash.setEncoding("hex");
 
 fd.on("end", function () {
 	hash.end();
 	var txt = hash.read();
-	if (process.argv[3] == "-c") {
+	if (process.argv[2] == "-c") {
 		clipboard.writeSync(txt);
 	}
 	txt = rainbow(txt);
