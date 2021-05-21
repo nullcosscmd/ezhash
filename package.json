@@ -4,9 +4,9 @@
   "description": "A better looking SHA256 hashing tool.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node index.js package.json"
   },
-  "author": "",
+  "author": "nullcoss",
   "license": "MIT",
   "bin": {
     "ezhash": "./index.js"
