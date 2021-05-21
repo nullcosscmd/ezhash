@@ -6,7 +6,7 @@ const color = require("./color").color;
 
 function rainbow(input) {
 	input = input.match(/.{1,3}/g);
-	let colorTxt = color("underline") + color("bright");
+	let colorTxt = color("brightunderline");
 	let index = 0;
 	let colors = ["magenta", "cyan", "green", "red"];
 	for (let i = 0; i < input.length; i++) {
@@ -33,9 +33,19 @@ function copyToClipboard(txt) {
 	clipboard.writeSync(txt);
 }
 
+function compareHashes(txt) {
+	if (txt == process.argv[3]) {
+		console.log(color("green") + "The hashes match!");
+	} else {
+		console.log(color("red") + "The hashes don't match!");
+	}
+}
+
 let option = false;
+
 let options = {
 	c: copyToClipboard,
+	d: compareHashes,
 };
 let fd;
 
