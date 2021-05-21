@@ -8,6 +8,9 @@
   },
   "author": "",
   "license": "MIT",
+  "bin": {
+    "ezhash": "./index.js"
+  },
   "dependencies": {
     "clipboardy": "^2.3.0"
   }

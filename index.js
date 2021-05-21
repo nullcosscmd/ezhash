@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const fs = require("fs");
 const crypto = require("crypto");
 const clipboard = require("clipboardy");
