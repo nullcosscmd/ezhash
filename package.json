@@ -1,5 +1,5 @@
 {
-  "name": "ezhash",
+  "name": "neohash",
   "version": "1.0.0",
   "description": "A better looking SHA256 hashing tool.",
   "main": "index.js",
@@ -9,7 +9,7 @@
   "author": "nullcoss",
   "license": "MIT",
   "bin": {
-    "ezhash": "./index.js"
+    "neohash": "./index.js"
   },
   "dependencies": {
     "clipboardy": "^2.3.0"
