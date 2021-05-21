@@ -50,6 +50,11 @@ function rainbow(input) {
 	return colorTxt;
 }
 
+if (!process.argv[2]) {
+	console.log(color("red") + "Please input a file directory!");
+	return 0;
+}
+
 let fd;
 
 if (process.argv[2] == "-c") {
