@@ -26,24 +26,16 @@ function rainbow(input) {
 	input = input.match(/.{1,3}/g);
 	let colorTxt = color("underline") + color("bright");
 	let index = 0;
+	let colors = ["magenta", "cyan", "green", "red"];
 	for (let i = 0; i < input.length; i++) {
 		const snip = input[i];
-		switch (index) {
-			case 0:
-				colorTxt = colorTxt + color("magenta");
-				break;
-			case 1:
-				colorTxt = colorTxt + color("cyan");
-				break;
-			case 2:
-				colorTxt = colorTxt + color("green");
-				break;
-			case 3:
-				colorTxt = colorTxt + color("red");
-				index = -1;
-				break;
+		if (index == 3) {
+			index = 1;
+			colorTxt = colorTxt + color(colors[index]);
+		} else {
+			index++;
+			colorTxt = colorTxt + color(colors[index]);
 		}
-		index++;
 		colorTxt = colorTxt + snip;
 	}
 	colorTxt = colorTxt + color("reset");
