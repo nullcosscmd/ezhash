@@ -1,0 +1,14 @@
+{
+  "name": "ezhash",
+  "version": "1.0.0",
+  "description": "A better looking SHA256 hashing tool.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "clipboardy": "^2.3.0"
+  }
+}
