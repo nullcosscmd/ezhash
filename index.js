@@ -34,8 +34,10 @@ function rainbow(input) {
 	return colorTxt;
 }
 
+//Preset error message for when the user doesn't enter a file location
 let locationErr = "Please input a file location!";
 
+//Make an erorr function to send an error message and then exit the script
 function err(input) {
 	console.log(color("red") + input);
 	process.exit();
@@ -69,22 +71,33 @@ let options = {
 //Get the file location from the last argument in the command
 let fd = fs.createReadStream(process.argv[process.argv.length - 1]);
 
+//If there's at least one argument, look for options
 if (process.argv.length >= 3) {
+	//Check to see if there's a dash at the front of the first argument
 	if (process.argv[2].charAt(0) == "-") {
+		//Let the script know that the user put an option
 		option = true;
+
+		//Check to see if the comparison option was used
 		if (process.argv[2] == "-d") {
+			//If there isn't an argument after the "-d," tell the user to input a hash
 			if (!process.argv[3]) {
 				err("Please input a hash for comparison!");
 			} else if (!process.argv[4]) {
+				//If there isn't an argument after the hash they used for comparison, tell the user to input a
+				//file location
 				err(locationErr);
 			}
 		} else {
+			//If the used didn't use the comparison option, check to see if they put a file location after the
+			//option
 			if (!process.argv[3]) {
 				err(locationErr);
 			}
 		}
 	}
 } else {
+	//If there's not a single argument, tell the user to input a file location
 	err(locationErr);
 }
 
