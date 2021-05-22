@@ -34,6 +34,13 @@ function rainbow(input) {
 	return colorTxt;
 }
 
+let locationErr = "Please input a file location!";
+
+function err(input) {
+	console.log(color("red") + input);
+	process.exit();
+}
+
 //Option callback functions
 //-------------------------
 function copyToClipboard(txt) {
@@ -67,22 +74,18 @@ if (process.argv.length >= 3) {
 		option = true;
 		if (process.argv[2] == "-d") {
 			if (!process.argv[3]) {
-				console.log(color("red") + "Please input a hash for comparison!");
-				process.exit();
+				err("Please input a hash for comparison!");
 			} else if (!process.argv[4]) {
-				console.log(color("red") + "Please input a file location!");
-				process.exit();
+				err(locationErr);
 			}
 		} else {
 			if (!process.argv[3]) {
-				console.log(color("red") + "Please input a file location!");
-				process.exit();
+				err(locationErr);
 			}
 		}
 	}
 } else {
-	console.log(color("red") + "Please input a file location!");
-	process.exit();
+	err(locationErr);
 }
 
 //Create a new SHA256 hash with hex encoding
