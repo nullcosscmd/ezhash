@@ -34,12 +34,6 @@ function rainbow(input) {
 	return colorTxt;
 }
 
-//Check to see if the user gave any arguments, if not, stop the rest of the script from running
-if (!process.argv[2]) {
-	console.log(color("red") + "Please input a file directory!");
-	return 0;
-}
-
 //Option callback functions
 //-------------------------
 function copyToClipboard(txt) {
@@ -68,10 +62,27 @@ let options = {
 //Get the file location from the last argument in the command
 let fd = fs.createReadStream(process.argv[process.argv.length - 1]);
 
-//Check for an option
-if (process.argv[2].charAt(0) == "-") {
-	//Set this variable as true to tell the script that the user gave an option
-	option = true;
+if (process.argv.length >= 3) {
+	if (process.argv[2].charAt(0) == "-") {
+		option = true;
+		if (process.argv[2] == "-d") {
+			if (!process.argv[3]) {
+				console.log(color("red") + "Please input a hash for comparison!");
+				process.exit();
+			} else if (!process.argv[4]) {
+				console.log(color("red") + "Please input a file location!");
+				process.exit();
+			}
+		} else {
+			if (!process.argv[3]) {
+				console.log(color("red") + "Please input a file location!");
+				process.exit();
+			}
+		}
+	}
+} else {
+	console.log(color("red") + "Please input a file location!");
+	process.exit();
 }
 
 //Create a new SHA256 hash with hex encoding
